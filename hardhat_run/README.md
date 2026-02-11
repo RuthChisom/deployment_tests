@@ -31,6 +31,7 @@ Ensure your have appropriate tokens in your wallet. Get free tokens from:
 ```shell
 https://faucet.circle.com/
 https://faucets.chain.link/
+https://sepolia-bridge.lisk.com/
 ```
 
 Go to /hardhat.config.ts and make the following changes including networks and etherscan
