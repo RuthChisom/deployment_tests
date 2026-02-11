@@ -27,36 +27,57 @@ npm install --save-dev "@nomicfoundation/hardhat-ignition@^0.15.16" "@nomicfound
 ```
 
 ### DEPLOY
-Go to /hardhat.config.ts and make the following changes including networks and etherscan
+Ensure your have appropriate tokens in your wallet. Get free tokens from:
+```shell
+https://faucet.circle.com/
+https://faucets.chain.link/
+```
 
+Go to /hardhat.config.ts and make the following changes including networks and etherscan
 ```shell
 require("dotenv").config();
-const {SEPOLIA_RPC_URL, SEPOLIA_PRIVATE_KEY, ETHERSCAN_API_KEY} = process.env;
+const {RPC_URL1, RPC_URL2, RPC_URL3, PRIVATE_KEY, ETHERSCAN_API_KEY} = process.env;
 ```
 
 ```shell
 networks: {
     sepolia: {
-      url: `${SEPOLIA_RPC_URL}`,
-      accounts: [`0x${SEPOLIA_PRIVATE_KEY}`],
+      url: `${RPC_URL1}`,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
+    arcTestnet: {
+      url: `${RPC_URL2}`,
+      accounts: [`0x${PRIVATE_KEY}`],
+      chainId: 5042002,
+    },
+    liskSepolia: {
+      url: `${RPC_URL3}`,
+      accounts: [`0x${PRIVATE_KEY}`],
+      chainId: 4202,
     },
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
    }
 ```
-Add your .env file in your project root
 
+Add your .env file in your project root
 ```shell
-SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/...
+RPC_URL1=https://eth-sepolia.g.alchemy.com/v2/... 
+RPC_URL2=https://rpc.testnet.arc.network 
+RPC_URL3=https://rpc.sepolia-api.lisk.com
 SEPOLIA_PRIVATE_KEY=...
 ETHERSCAN_API_KEY=...
+
 ```
 
 ```shell
 npm install dotenv
 npx hardhat ignition deploy ignition/modules/Owner.ts --network sepolia --verify
+npx hardhat ignition deploy ignition/modules/Owner.ts --network arcTestnet --verify
+npx hardhat ignition deploy ignition/modules/Owner.ts --network liskSepolia --verify
 ```
 
-Verified Arc Address - 0x81AeC0B87CAa631365B0AC0B628A84afdf6f1Fe9
-Verified Lisk Address - 0xabc8Fb2C87F7C9a247d7286d14987820594FdDFe
+If verification fails, you can visit he network's explorer to verify manually.
+#### Verified Arc Address - 0x81AeC0B87CAa631365B0AC0B628A84afdf6f1Fe9
+#### Verified Lisk Address - 0xabc8Fb2C87F7C9a247d7286d14987820594FdDFe
