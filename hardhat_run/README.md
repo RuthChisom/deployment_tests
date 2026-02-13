@@ -29,6 +29,7 @@ npm install --save-dev "@nomicfoundation/hardhat-ignition@^0.15.16" "@nomicfound
 ### DEPLOY
 Ensure your have appropriate tokens in your wallet. Get free tokens from:
 ```shell
+https://cloud.google.com/application/web3/faucet
 https://faucet.circle.com/
 https://faucets.chain.link/
 https://sepolia-bridge.lisk.com/

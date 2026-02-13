@@ -17,7 +17,19 @@ Go to /test and remove the demo test
 forge build
 ```
 
+If you get "Error: solc exited with signal:", add this to your foundry.toml
+```shell
+solc-version = "0.8.20"
+```
+
 ### DEPLOY
+Ensure your have appropriate tokens in your wallet. Get free tokens from:
+```shell
+https://cloud.google.com/application/web3/faucet
+https://faucet.circle.com/
+https://faucets.chain.link/
+https://sepolia-bridge.lisk.com/
+```
 
 Add your .env file in your project root
 ```shell
@@ -28,7 +40,10 @@ PRIVATE_KEY=0x...
 ```
 
 ```shell
-forge script script/Owner.s.sol --broadcast --rpc-url $RPC_URL --private-key $PRIVATE_KEY
+source .env
+forge script script/Owner.s.sol --broadcast --rpc-url $RPC_URL1 --private-key $PRIVATE_KEY
+forge script script/Owner.s.sol --broadcast --rpc-url $RPC_URL2 --private-key $PRIVATE_KEY
+forge script script/Owner.s.sol --broadcast --rpc-url $RPC_URL3 --private-key $PRIVATE_KEY
 ```
 
 If verification fails, you can visit he network's explorer to verify manually.
