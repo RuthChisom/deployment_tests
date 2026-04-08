@@ -44,6 +44,8 @@ source .env
 forge script script/Owner.s.sol --broadcast --rpc-url $RPC_URL1 --private-key $PRIVATE_KEY
 forge script script/Owner.s.sol --broadcast --rpc-url $RPC_URL2 --private-key $PRIVATE_KEY
 forge script script/Owner.s.sol --broadcast --rpc-url $RPC_URL3 --private-key $PRIVATE_KEY
+
+forge verify-contract contractaddress src/name.sol:contractname --chain-id 4202 --verifier blockscout --verifier-url https://sepolia-blockscout.lisk.com/api --watch
 ```
 
 If verification fails, you can visit he network's explorer to verify manually.
